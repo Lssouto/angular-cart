@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/main';
+footer{
+    background-color: $main;
+    padding: 10px 25px;
+    color: $white;
+    a{
+        color: $white;
+        @extend .fast-e;
+        &:hover{
+            color: darken($white,25%);
+        }
+    }
+}

@@ -1,0 +1,10 @@
+//Generic
+.super-fast-e{
+    @include animation-spd(.1s);
+}
+.fast-e{
+	@include animation-spd(.2s);
+}
+.slow-e{
+    @include animation-spd(.4s);
+}

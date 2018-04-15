@@ -1,0 +1,22 @@
+@import '../../../../assets/styles/main';
+
+#index{
+    .site-item{
+        margin: 0 15px;
+        box-shadow: 0 0 6px 0 darken($light-gray,8%);
+        background-color: $white;
+        .content{
+            padding: 15px;
+        }
+        span.price{
+            widows: 100%;
+            display: block;
+        }
+        .btn{
+            margin: 25px 0 0 0;
+            border-radius: 2px;
+            font-size: 13px;
+            display: inline-block;
+        }
+    }
+}

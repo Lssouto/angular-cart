@@ -1,0 +1,20 @@
+<section id="login">
+  <div class="container">
+    <div *ngIf="status">
+      {{msg}}
+    </div>
+    <form (submit)="login($event)">
+      <label class="input-container">
+        Login
+        <input type="text" #user>
+      </label>
+      <label class="input-container">
+        Password
+        <input type="text" #password>
+      </label>
+
+      <button class="btn bg-main">Login</button>
+
+    </form>
+  </div>
+</section>

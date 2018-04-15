@@ -1,0 +1,31 @@
+.bg{
+    &-main{
+        @include bg-style($main,$white);
+    }
+    &-dark-main{
+        @include bg-style($dark-main,$white);
+    }
+    &-secundary{
+        @include bg-style($secundary,$main);
+    }
+    &-black{
+        @include bg-style($black,$white);
+    }
+    &-medium-gray{
+        @include bg-style($medium-gray, $white)
+    }
+    &-light-gray{
+        @include bg-style($light-gray, $white)
+    }
+    &-white{
+        @include bg-style($white, $black)
+    }
+}
+.color{
+    &-main{
+        color: $main;
+    }
+    &-secundary{
+        color: $secundary
+    }
+}

@@ -1,0 +1,10 @@
+@import '../../../../assets/styles/main';
+
+form{
+    margin:  0 auto;
+    display: block;
+    width: 450px;
+    @include media($md, 'max'){
+        width: 100%;
+    } 
+}

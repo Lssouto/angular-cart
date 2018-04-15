@@ -1,0 +1,24 @@
+.btn{
+    &:not(.no-radius){
+        border-radius: 40px;
+    }
+    &:not(.no-margin){
+        margin: 15px 0;
+    }
+    span{
+        margin-left: 15px;
+    }
+    padding: 10px 25px;
+    font-weight: bolder;
+    font-size: 18px;
+    border: 0px;
+    cursor: pointer;
+
+    @include media($sm,'max'){
+        word-wrap: break-word;
+        margin: 0 auto;
+        padding: 10px 0 ;
+        width: 100%;
+    }
+}
+
