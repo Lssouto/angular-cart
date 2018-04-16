@@ -12,12 +12,10 @@ import { Error } from '../../../interfaces/error/error';
 
 export class LoginComponent implements OnInit {
 
-  auth: User;
-  error: Error;
+  error : Error;
 
   constructor(private router:Router, private authService:AuthService) { 
-    this.error.msg = '';
-    this.error.status = false;
+    this.error = new Error(false,'')
   }
 
   ngOnInit() {
@@ -26,11 +24,11 @@ export class LoginComponent implements OnInit {
   login(e){
     e.preventDefault();
     try{
-      this.auth.login = e.target.elements[0].value;
-      this.auth.password = e.target.elements[1].value;
-
-      const isValid = Object.keys(this.auth).every(item=>{
-        return !!this.auth[item];
+      
+      const credentials = new User(e.target.elements[0].value,e.target.elements[1].value);
+  
+      const isValid = Object.keys(credentials.getAuth()).every(item=>{
+        return !!credentials.getAuth()[item];
       })
 
       if(isValid){
@@ -42,8 +40,7 @@ export class LoginComponent implements OnInit {
       }
     }catch(e){
       console.error(''+ e);
-      this.error.msg = "" + e;
-      this.error.status = true;
+      this.error = new Error(true,e);
     }
   }
 }

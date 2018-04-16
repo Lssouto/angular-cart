@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
   import { IndexComponent } from './components/pages/index/index.component';
   import { PainelComponent } from './components/pages/painel/painel.component';
   import { LoginComponent } from './components/pages/login/login.component';
-  import { CartComponent } from './components/pages/cart/cart.component'
+  import { CartComponent } from './components/pages/cart/cart.component';
+
 //Libs
   import { SlickModule } from 'ngx-slick';
 
@@ -21,10 +22,6 @@ import { AppComponent } from './app.component';
 
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
-
-//Interface
-  import { User as UserInter } from './interfaces/auth/user'
-  import { Error as ErrorInter } from './interfaces/error/error'
 
 //Routes
 const appRoutes : Routes = [
