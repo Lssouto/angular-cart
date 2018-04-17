@@ -1,10 +1,40 @@
 <section>
   <div class="container">
-    {{id}}
-    <img src="{{item.image}}" alt="">
-    {{item.title}} <br>
-    {{item.price}}
-    <button class="btn bg-main" (click)="addCart()">Adicionar ao Carrinho</button>
-    <button class="btn bg-secundary" (click)="back()">Voltar</button>
+    <div class="item">
+
+      <div class="flex-container">
+
+        <div class="image-container">
+          <img src="{{item.image}}" alt="">
+        </div>
+
+        <div class="main-info">
+
+          <h2 class="title">{{item.title}}</h2>
+
+          <div class="price color-secundary">
+            {{item.price | currency}}
+          </div>
+
+        </div>
+
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique totam esse magni voluptas dicta soluta cumque, corporis sed vitae nemo pariatur eligendi aliquid eum? Non sit voluptates magni veritatis dicta, consequuntur voluptatibus architecto ex eum veniam provident optio harum saepe.
+      </p>
+
+      <div class="separator"></div>
+
+      <div class="info">
+        <strong>Proprietario:</strong>  Joaozinho da Silva Junior <br>
+        <strong> Telefone:</strong> (12) 2345-3323
+      </div>
+
+      <div class="action">
+        <button class="btn bg-main no-radius" (click)="addCart()">Adicionar ao Carrinho</button>
+        <button class="btn bg-secundary no-radius" (click)="back()">Voltar</button>
+      </div>
+
+    </div>
   </div>
 </section>

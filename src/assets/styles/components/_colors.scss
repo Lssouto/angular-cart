@@ -6,6 +6,9 @@
         @include bg-style($dark-main,$white);
     }
     &-secundary{
+        @include bg-style($secundary,$white);
+    }
+    &-secundary-main{
         @include bg-style($secundary,$main);
     }
     &-black{
@@ -27,5 +30,8 @@
     }
     &-secundary{
         color: $secundary
+    }
+    &-complement{
+        color: $complement;
     }
 }

@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
     })
 
     this.slideConfig = {
-      "slidesToShow": 4,
+      "slidesToShow": 5,
       "slidesToScroll": 1,
       "autoplay": true,
       "autoplaySpeed": 2000 
