@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Simple } from '../../../interfaces/items/simple';
+import { ItemService } from '../../../services/item/item.service';
 
 @Component({
   selector: 'app-index',
@@ -7,30 +8,25 @@ import { Simple } from '../../../interfaces/items/simple';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+
   slides : Array<Simple>;
   slideConfig : Object;  
 
-  constructor() { }
+  constructor(private itemService : ItemService) { }
 
-  ngOnInit() {
-    this.slides = [];
-    for( let index = 0; index < 5; index++){
-      let item : Simple = {
-        id: index,
-        title : 'titulo ' + index,
-        image : "http://placehold.it/350x150/" + index * 12345,
-        price : index * 123
-      };
+  async ngOnInit() {
 
-    this.slides.push(item);
-  }
-  
+    await this.itemService.get((response)=>{
+      this.slides = response.data;
+    })
+
     this.slideConfig = {
       "slidesToShow": 4,
       "slidesToScroll": 1,
       "autoplay": true,
       "autoplaySpeed": 2000 
     };
+
   }
 
 }

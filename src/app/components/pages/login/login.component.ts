@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(e){
+  async login(e){
     e.preventDefault();
     try{
       
@@ -32,8 +32,12 @@ export class LoginComponent implements OnInit {
       })
 
       if(isValid){
-        this.authService.Login();
-        this.router.navigate(['Painel'])
+        await this.authService.Login(credentials, (data) =>{
+          if(data.status)
+            this.router.navigate(['Painel'])
+          else  
+            throw "Usuário Inválido"
+        });
       }
       else{
         throw "Campos Inválidos"

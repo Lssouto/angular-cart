@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule, Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -13,13 +14,13 @@ import { AppComponent } from './app.component';
   import { PainelComponent } from './components/pages/painel/painel.component';
   import { LoginComponent } from './components/pages/login/login.component';
   import { CartComponent } from './components/pages/cart/cart.component';
-
+  import { ItemComponent } from './components/pages/item/item.component';
 //Libs
   import { SlickModule } from 'ngx-slick';
 
 //Service
   import { AuthService } from './services/auth/auth.service';
-
+  import { ItemService } from './services/item/item.service';
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
 
@@ -39,7 +40,12 @@ const appRoutes : Routes = [
     component: LoginComponent
   },
   {
-    path: 'Comprar/:id',
+    path: 'Item/:id',
+    component: ItemComponent
+  },
+  {
+    path: 'Cart',
+    canActivate : [AuthGuard],
     component: CartComponent
   },
   {
@@ -56,14 +62,16 @@ const appRoutes : Routes = [
     IndexComponent,
     PainelComponent,
     LoginComponent,
-    CartComponent
+    CartComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

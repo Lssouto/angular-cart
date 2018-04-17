@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +10,8 @@ export class CartComponent implements OnInit {
 
   id: number;
 
-  constructor(private router : ActivatedRoute) { }
+  constructor() {}
 
-  ngOnInit() {
-    this.router.params.subscribe(params => {
-      this.id = +params['id'];
-   });
-  }
+  ngOnInit() {}
 
 }

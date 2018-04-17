@@ -1,0 +1,10 @@
+<section>
+  <div class="container">
+    {{id}}
+    <img src="{{item.image}}" alt="">
+    {{item.title}} <br>
+    {{item.price}}
+    <button class="btn bg-main" (click)="addCart()">Adicionar ao Carrinho</button>
+    <button class="btn bg-secundary" (click)="back()">Voltar</button>
+  </div>
+</section>

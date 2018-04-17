@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../interfaces/auth/user';
 @Injectable()
 export class AuthService {
 
   private isUserLoggedIn : boolean;
   private auth : Object;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
   }
 
@@ -14,8 +15,18 @@ export class AuthService {
     return this.isUserLoggedIn;
   }
   
-  Login(){
-    this.isUserLoggedIn = true;
+  async Login(credentials : User , callback : (data) => void){
+    await this.http.post('http://localhost:8080/api/login',credentials.getAuth())
+      .subscribe(
+        response => {
+          callback(response)
+          this.isUserLoggedIn = true;
+        },
+        err => {
+          console.log(err)
+          return;
+        }
+      )
   }
 
   Logout(){
