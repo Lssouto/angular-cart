@@ -31,7 +31,7 @@ module.exports = {
                 res.send({
                     status: true,
                     msg: "Login Realizado" ,  
-                    user: verifyResult.user.user
+                    id: verifyResult.user.id
                 })
             else
                 res.send({

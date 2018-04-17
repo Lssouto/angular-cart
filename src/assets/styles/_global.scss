@@ -37,7 +37,7 @@
     display: block;
     margin: 0 auto;
     @include media($md,'max'){
-        padding: 0 15px;
+        padding: 0 25px;
         width: inherit;
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Simple } from '../../../interfaces/items/simple';
 import { ItemService } from '../../../services/item/item.service';
+import { CartService } from '../../../services/cart/cart.service';
 
 @Component({
   selector: 'app-item',
@@ -16,7 +17,8 @@ export class ItemComponent implements OnInit {
   constructor(
     private activatedRouter : ActivatedRoute, 
     private router : Router, 
-    private itemService : ItemService) {
+    private itemService : ItemService,
+    private cartService : CartService) {
       this.item = new Simple ('',0,0,'');
   }
 
@@ -32,8 +34,10 @@ export class ItemComponent implements OnInit {
 
   }
 
-  addCart(){
-    console.log(this.id)
+  async addItemToCart(){
+    this.cartService.addItem(this.id, (response)=>{
+
+    })
   }
 
   back(){

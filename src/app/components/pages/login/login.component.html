@@ -1,8 +1,12 @@
 <section id="login">
   <div class="container">
-    <div *ngIf="error.status">
-      {{error.msg}}
+    
+    <div *ngIf="error.status" class="msg-box">
+      <div class="msg-box-content">
+        {{error.msg}}
+      </div>
     </div>
+
     <form (submit)="login($event)">
       <label class="input-container">
         Login

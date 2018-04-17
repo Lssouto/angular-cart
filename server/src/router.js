@@ -2,6 +2,7 @@ const Ctrls = ['AuthCtrl','UserCtrl','ItemCtrl'];
 const AuthCtrl = require('./controller/Authentication')
 const UserCtrl = require('./controller/User')
 const ItemCtrl = require('./controller/Item')
+const CartCtrl = require('./controller/Cart')
 const config  = require('./config')
 
 const _all = (req, res, next) => {
@@ -30,4 +31,8 @@ module.exports = (router)=>{
   //Item
     router.get(config.data.api+ '/item', ItemCtrl.read),
     router.get(config.data.api+ '/item/:id', ItemCtrl.readOne)
+
+  //Cart
+    router.get(config.data.api+ '/cart/:id', CartCtrl.get)
+    router.post(config.data.api+ '/cart/:id', CartCtrl.addItem)
 };

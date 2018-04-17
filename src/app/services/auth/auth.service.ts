@@ -6,6 +6,7 @@ export class AuthService {
 
   private isUserLoggedIn : boolean;
   private auth : Object;
+  private UserId : Number;
 
   constructor(private http: HttpClient) {
     this.isUserLoggedIn = false;
@@ -20,12 +21,17 @@ export class AuthService {
       .subscribe(
         response => {
           callback(response)
+          this.UserId = response['id'];
           this.isUserLoggedIn = true;
         })
   }
 
   Logout(){
     this.isUserLoggedIn = false;
+  }
+  
+  getUserId() : Number {
+    return this.UserId;
   }
 
 }

@@ -67,8 +67,33 @@ let _items = [
     }
 
 ];
+let _cartList = [];
+
+//CartModel
+class Cart {
+
+    constructor(idCart,idUser){
+        this.idCart = idCart;
+        this.idUser = idUser;
+        this.items = [];
+    }
+
+    addItem(array){
+        this.items.push(array);
+    }
+}
+
+//ItemModel
+// class Item {
+//     id;
+//     title;
+//     image = "http://placehold.it/350x150/";
+//     price;
+// }
 
 module.exports = { 
     usuarios : _usuarios,
-    items : _items
+    items : _items,
+    cartList: _cartList,
+    Cart
 };

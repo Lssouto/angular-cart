@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 //Service
   import { AuthService } from './services/auth/auth.service';
   import { ItemService } from './services/item/item.service';
+  import { CartService } from './services/cart/cart.service';
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
 
@@ -71,7 +72,7 @@ const appRoutes : Routes = [
     SlickModule.forRoot(),
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, ItemService],
+  providers: [AuthService, AuthGuard, ItemService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
