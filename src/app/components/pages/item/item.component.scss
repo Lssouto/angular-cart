@@ -2,13 +2,23 @@
 
 .item{
     background-color: $white;
-    padding: 50px;
+    padding: 15px;
     box-shadow: 0 0 6px 0 darken($light-gray,16%);
-
+    @include media($md, 'min'){
+        padding: 50px;
+        .flex-container .image-container img{
+            width: initial;
+        }
+    }
     .flex-container{
         @include flex-align(0 1 auto);
         margin-bottom: 25px;
-
+        .image-container{
+            margin-bottom: 25px;
+            img{
+                width: 100%;
+            }
+        }
         .main-info{
             flex: 1 1 auto;
             @include flex-align(1 1 auto);
@@ -34,6 +44,12 @@
         font-size: 12px;
         margin-top: 25px;
         line-height: 22px;
+    }
+    .info{
+        margin-bottom: 35px;
+        & > *{
+            margin-top: 10px;   
+        }
     }
     .action{
         text-align: right;

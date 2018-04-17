@@ -21,12 +21,7 @@ export class AuthService {
         response => {
           callback(response)
           this.isUserLoggedIn = true;
-        },
-        err => {
-          console.log(err)
-          return;
-        }
-      )
+        })
   }
 
   Logout(){

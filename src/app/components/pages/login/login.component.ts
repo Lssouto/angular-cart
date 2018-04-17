@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
 
   async login(e){
     e.preventDefault();
+    
+    this.error = new Error(false,'');
+
     try{
       
       const credentials = new User(e.target.elements[0].value,e.target.elements[1].value);
@@ -43,8 +46,8 @@ export class LoginComponent implements OnInit {
         throw "Campos Inválidos"
       }
     }catch(e){
-      console.error(''+ e);
-      this.error = new Error(true,e);
+      //console.error(''+ e);
+      this.error = new Error(true,'' + e);
     }
   }
 }
