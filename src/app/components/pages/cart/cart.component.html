@@ -1,5 +1,40 @@
-<section>
+<section id="cart">
   <div class="container">
-    {{id}}
+
+    <div class="white-container">
+      <label class="input-container">
+        <select name="order-by" (change)="changeOrder($event)" #orderBy>
+          <option value="price">Price</option>
+          <option value="date">Data</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+
+      <ul class="cart-list" *ngIf="items.length">
+        <li *ngFor="let item of items">
+          <div class="image-container">
+            <img src="{{item.image}}" alt="">
+          </div>
+          <div class="content">
+            <h2 class="title">
+              {{item.title}}
+            </h2>
+            <span class="price">
+              {{item.price | currency}}
+            </span>
+          </div>
+          <div class="actions">
+            <a href="#" class="btn bg-main no-radius max">Mensagens <span>a</span>  </a>
+            <a [routerLink]="['/Item/',item.id]" class="btn bg-secundary no-radius max">Ver Produto <span>b</span> </a>
+          </div>
+          <a href="#" class="btn btn-remove bg-complement no-radius max">X</a>
+        </li>
+      </ul>
+      <div class="msg-box" *ngIf="!items.length"> 
+        <div class="msg-box-content">
+          Voce nao adicionou produtos ao carrinho !! 
+        </div>
+      </div>
+    </div>
   </div>
 </section>

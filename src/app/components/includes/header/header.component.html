@@ -3,6 +3,7 @@
     <ul>
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/Painel">Painel</a></li>
+      <li *ngIf="AuthService.isUserLoggedIn"><a routerLink="/Cart">Cart</a></li>
       <li *ngIf="AuthService.isUserLoggedIn"><a href="/Logout" (click)="logout($event)">Logout</a></li>
       <li *ngIf="!(AuthService.isUserLoggedIn)"><a routerLink="/Login">Login</a></li>
     </ul>

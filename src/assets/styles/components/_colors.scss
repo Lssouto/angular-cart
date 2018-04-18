@@ -11,6 +11,9 @@
     &-secundary-main{
         @include bg-style($secundary,$main);
     }
+    &-complement{
+        @include bg-style($complement,$white);
+    }
     &-black{
         @include bg-style($black,$white);
     }

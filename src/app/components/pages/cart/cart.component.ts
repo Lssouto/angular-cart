@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../../services/cart/cart.service';
+import { Simple } from '../../../interfaces/items/simple';
 
 
 @Component({
@@ -8,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  id: number;
+  items : Array<Simple>;
+  idCart : Number;
+  orderBy: String;
 
-  constructor() {}
+  constructor(private cartService : CartService) {
+    this.items = [];  
+  }
 
-  ngOnInit() {}
+   async ngOnInit() {
+    await this.cartService.get( response =>{
+      console.log(response)
+      this.idCart = response.data.idCart
+      this.items = response.data.items;
+    });
+  }
 
+  changeOrder() : void{
+    console.log(123)
+  }
 }

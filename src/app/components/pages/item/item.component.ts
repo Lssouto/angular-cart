@@ -36,7 +36,7 @@ export class ItemComponent implements OnInit {
 
   async addItemToCart(){
     this.cartService.addItem(this.id, (response)=>{
-
+      console.log(response)
     })
   }
 

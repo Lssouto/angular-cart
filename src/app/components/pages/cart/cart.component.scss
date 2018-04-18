@@ -1,0 +1,108 @@
+@import '../../../../assets/styles/main';
+
+
+#cart{
+    .white-container{
+        background-color: $white;
+        padding: 15px;
+        box-shadow: 0 0 6px 0 darken($light-gray,16%);
+        @include media($md, 'min'){
+            padding: 50px;
+            .flex-container .image-container img{
+                width: initial;
+            }
+        }
+    }
+    .input-container {
+        width: 200px;
+    }
+    .cart-list{
+        margin-top: 45px;
+        @include flex-align(0 1 auto);
+        justify-content: space-around;
+        li{
+            @extend .fast-e;
+            width: 250px;
+            border-radius: 4px;
+            margin-bottom: 45px;
+            background-color: lighten($light-gray,4%);
+            box-shadow: 0 0 8px 2px (darken($light-gray,6%));
+            position: relative;
+            &:hover{
+                background-color: $white;
+                box-shadow: 0 0 8px 2px (darken($light-gray,16%));   
+            }
+            .image-container{
+                border-radius: 6px 6px 0 0 ;
+                margin-top: -6px;
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+                @include media($sm,'max'){
+                    width: 100%;
+                    height: 250px;
+                }
+                img{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            .content{
+                padding: 25px;
+            }
+            .actions{
+                .btn{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    padding: 5px 0;
+                    font-size: 16px;
+                    margin: 0;
+                    color: $white;
+                    position: relative;
+                    &:not(:last-child){
+                        border-bottom: 2px solid $black;
+                    }
+                    &:last-child{
+                        border-radius: 0 0 4px 4px;
+                    }
+                    span{
+                        opacity: 0.2;
+                        position: absolute;
+                        @keyframes bounce {
+                            0%{ transform: scale(1);}
+                            20%{ transform: scale(2.0);}
+                            40%{ transform: scale(0.9);}
+                            60%{ transform: scale(1.5);}
+                            80%{ transform: scale(0.8);}
+                            100%{ transform: scale(1);}
+                        }
+                    }
+                    &:hover{ 
+                        span{
+                            opacity: 1;
+                            animation: bounce .8s linear;   
+                        }
+                    }
+                }
+            }
+            .btn-remove{
+                border-radius: 50%;
+                padding: 5px 10px;
+                position: absolute;
+                top: -15px;
+                right: -10px;
+                margin: 0;
+                @include media($sm,'max'){
+                    width: initial;
+                }
+            }
+        }
+    }
+}

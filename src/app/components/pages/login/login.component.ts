@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AuthService } from '../../../services/auth/auth.service';
 import { User } from '../../../interfaces/auth/user';
 import { Error } from '../../../interfaces/error/error';
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   error : Error;
 
-  constructor(private router:Router, private authService:AuthService) { 
+  constructor(private location : Location, private authService:AuthService) { 
     this.error = new Error(false,'')
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if(isValid){
         await this.authService.Login(credentials, (data) =>{
           if(data.status)
-            this.router.navigate(['Painel'])
+            this.location.back();
           else  
             throw "Usuário Inválido"
         });

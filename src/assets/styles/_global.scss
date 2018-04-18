@@ -59,7 +59,7 @@ section{
     width: 100%;
     display: block;
     margin: 10px 0;
-    input{
+    input,select,textarea{
         -webkit-padding-start: 15px;
         padding-left: 15px;
         width: 100%;
@@ -67,6 +67,10 @@ section{
         margin-top: 8px;
         height: 35px;
         border: $medium-gray 1px solid;
-        box-shadow: 0 0 3px 0 $dark-main;
+        @extend .fast-e;
+        &:hover{
+            box-shadow: 0 0 3px 0 $dark-main;
+            
+        }
     }
 }

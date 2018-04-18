@@ -9,21 +9,42 @@ module.exports = {
     },
     addItem: (req,res) =>{
         try{
+            let cart = null;
+            let existUserCart = false;
             const idUser = req.params.id;
-            console.log(req.params.id)
-            const newCart = new model.Cart(0,idUser);
 
+            if(model.cartList.length)
+                 existUserCart = (model.cartList).find(cart =>{
+                    return cart.idUser == idUser;
+                });
+
+            if(existUserCart){
+                cart = existUserCart;
+            }
+            else{
+                cart = new model.Cart( model.cartList.length, idUser );
+            }
+            
             const item = (model.items).find(item =>{
                 return req.body.itemId == item.id
             });
             
-            newCart.addItem(item)
+            cart.addItem(item)
 
-            model.cartList.push(newCart);
-
+            if(existUserCart){
+                model.cartList.splice(
+                    existUserCart.id-1,
+                    1,
+                    cart
+                );
+            }
+            else{
+                model.cartList.push(cart);
+            }
+            
             res.send({
                 status: true,
-                data: model.cartList,
+                data: null,
                 msg: "Adicionado"
             })
         }catch(e){
@@ -36,13 +57,20 @@ module.exports = {
     },
     get: (req,res)=>{
         try{
-            // const idUser = req.params.id
-            // const cart = (model.cartList).find(cart=>{
-            //     return idUser == cart.id
-            // });
+            const idUser = req.params.id
+            let userCart;
+            
+            if(model.cartList.length)
+                userCart = (model.cartList).find(cart =>{
+                    return cart.idUser == idUser;
+                });
+            else{
+                throw 'Carrinho Inexistente';
+            }
+
             res.send({
                 status: true,
-                data: model.cartList,
+                data: userCart,
                 msg: "Adicionado"
             })
         }catch(e){
