@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { JSONP_ERR_NO_CALLBACK } from '@angular/common/http/src/jsonp';
 @Injectable()
 export class CartService {
 
@@ -17,7 +18,7 @@ export class CartService {
     }
   }
 
-  addItem(itemId, callback){
+  addItem(itemId : number, callback : (data) => void ){
     if(this.isUserLoggedIn())
       this.http.post('http://localhost:8080/api/cart/' + this.auth.getUserId(), {
         itemId : itemId
@@ -28,7 +29,7 @@ export class CartService {
         )
   }
 
-  get(callback){
+  get(callback) : void{
     if(this.isUserLoggedIn())
       this.http.get('http://localhost:8080/api/cart/'+this.auth.getUserId())
         .subscribe(
@@ -36,5 +37,25 @@ export class CartService {
             callback(response)
           }
         )
+  }
+  
+  clean(callback : (data) => void) : void{
+    if(this.isUserLoggedIn())
+      this.http.delete('http://localhost:8080/api/cart/'+this.auth.getUserId())
+      .subscribe(
+        response => {
+          callback(response)
+        }
+      )
+  }
+  
+  deleteItem(idItem : number, callback : (data) => void): void{
+    if(this.isUserLoggedIn())
+      this.http.delete('http://localhost:8080/api/cart/' +this.auth.getUserId() + '/' + idItem)
+      .subscribe(
+        response=>{
+          callback(response)
+        }
+      )
   }
 }

@@ -30,9 +30,11 @@ module.exports = (router)=>{
   
   //Item
     router.get(config.data.api+ '/item', ItemCtrl.read),
-    router.get(config.data.api+ '/item/:id', ItemCtrl.readOne)
+    router.get(config.data.api+ '/item/:id', ItemCtrl.readOne),
 
   //Cart
-    router.get(config.data.api+ '/cart/:id', CartCtrl.get)
-    router.post(config.data.api+ '/cart/:id', CartCtrl.addItem)
+    router.get(config.data.api+ '/cart/:id', CartCtrl.get),
+    router.post(config.data.api+ '/cart/:id', CartCtrl.addItem),
+    router.delete(config.data.api+ '/cart/:id', CartCtrl.delete),
+    router.delete(config.data.api+ '/cart/:idUser/:idItem', CartCtrl.deleteItem)
 };

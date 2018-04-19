@@ -1,12 +1,16 @@
 .btn{
     &:not(.no-radius){
-        border-radius: 40px;
+        // border-radius: 40px;
     }
     &:not(.no-margin){
         margin: 15px 0;
     }
     span{
         margin-left: 15px;
+    }
+    &[disabled]{
+        opacity: 0.4;
+        cursor: not-allowed;
     }
     padding: 10px 25px;
     font-weight: bolder;

@@ -10,6 +10,7 @@ import swal from 'sweetalert2';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
+
 export class ItemComponent implements OnInit {
 
   id : number;
@@ -56,7 +57,7 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  back(){
+  back() : void {
     this.router.navigate(['Index']);
   }
 

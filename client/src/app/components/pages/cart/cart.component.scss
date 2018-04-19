@@ -2,6 +2,10 @@
 
 
 #cart{
+    header.list{
+        @include flex-align(0 0 auto);
+        justify-content: space-between;
+    }
     .white-container{
         background-color: $white;
         padding: 15px;
@@ -17,8 +21,10 @@
         width: 200px;
     }
     .cart-list{
-        margin-top: 45px;
         @include flex-align(0 1 auto);
+        @extend .fast-e;
+    
+        margin-top: 45px;
         justify-content: space-around;
         li{
             @extend .fast-e;
@@ -75,14 +81,6 @@
                     span{
                         opacity: 0.2;
                         position: absolute;
-                        @keyframes bounce {
-                            0%{ transform: scale(1);}
-                            20%{ transform: scale(2.0);}
-                            40%{ transform: scale(0.9);}
-                            60%{ transform: scale(1.5);}
-                            80%{ transform: scale(0.8);}
-                            100%{ transform: scale(1);}
-                        }
                     }
                     &:hover{ 
                         span{
@@ -104,5 +102,9 @@
                 }
             }
         }
+    }
+    .actions{
+        @include flex-align(0 0 auto);
+        justify-content: space-between;
     }
 }

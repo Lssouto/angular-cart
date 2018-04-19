@@ -80,5 +80,56 @@ module.exports = {
                 msg: "" + e
             })
         }
+    },
+    delete : (req,res)=>{
+        try{
+            const idUser = req.params.id;
+            const userIndex = (model.cartList).findIndex(cart=>{
+                return cart.idUser == idUser;
+            })
+
+            const removedCart = model.cartList.splice(userIndex,1);
+
+            res.send({
+                status: true,
+                data: removedCart,
+                msg: 'Mensagem Removida com sucesso'
+
+            })
+        }
+        catch(e){
+            res.send({
+                status: false,
+                error: '' + e 
+            })   
+        }
+    },
+    deleteItem : (req,res)=>{
+        try{
+            const idUser = req.params.idUser;
+            const idItem = req.params.idItem;
+            
+            const userCartIndex = (model.cartList).findIndex(cart=>{
+                return cart.idUser == idUser;
+            });
+
+            const itemIndex = (model.cartList[userCartIndex]['items']).findIndex(item => {
+                return item.id == idItem;
+            })
+
+            const removedItem = model.cartList[userCartIndex]['items'].splice(itemIndex,1)
+
+            res.send({
+                status: true,
+                data: itemIndex,
+                msg: 'Item removido com sucesso.'
+            });
+
+        }catch(e){
+            res.send({
+                status: false,
+                error: '' + e
+            })
+        }
     }
 }
