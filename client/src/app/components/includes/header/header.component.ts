@@ -11,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   collapsed : Boolean = true;
 
-  constructor(private AuthService : AuthService, private router : Router) {}
+  constructor(private AuthService : AuthService, private router : Router) {
+    if(window.innerWidth < 768)
+      this.collapsed = false;
+  }
 
   ngOnInit() {
   }
