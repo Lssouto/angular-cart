@@ -8,8 +8,7 @@ header#site {
     ul{
         @include flex-align(0 0 auto);
         justify-content: flex-end;
-        margin-top: -55%;
-        padding-bottom: 40px;
+        margin-top: -100%;
         transition: ease 0.28s all;
         li{
             margin: 0;
@@ -28,14 +27,14 @@ header#site {
         }
         &.collapsed{
             margin-top: 0;
-            padding-bottom: 0;
         }
     }
     .mobile-dropdown-toggle{
         margin-top: 5px;
-        background-color: $white;
+        margin-left: 5px;
+        background-color: $main;
         border: 0;
-        color: $main;
+        color: $white;
     }
     @include media($md,'min'){
         .mobile-dropdown-toggle{

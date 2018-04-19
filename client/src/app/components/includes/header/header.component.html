@@ -1,6 +1,11 @@
 <header id="site">
   <button class="mobile-dropdown-toggle" (click)="collapsed = !collapsed">
-    Open
+    <span *ngIf="collapsed">
+      Fechar
+    </span>
+    <span *ngIf="!collapsed">
+        Fechar
+      </span>
   </button>
   <nav>
     <ul [ngClass]="{collapsed : collapsed}" >
