@@ -1,6 +1,9 @@
 <header id="site">
+  <button class="mobile-dropdown-toggle" (click)="collapsed = !collapsed">
+    Open
+  </button>
   <nav>
-    <ul>
+    <ul [ngClass]="{collapsed : collapsed}" >
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/Painel">Painel</a></li>
       <li *ngIf="AuthService.isUserLoggedIn"><a routerLink="/Cart">Cart</a></li>

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  collapsed : Boolean = true;
+
   constructor(private AuthService : AuthService, private router : Router) {}
 
   ngOnInit() {
@@ -18,5 +20,9 @@ export class HeaderComponent implements OnInit {
     e.preventDefault();
     this.AuthService.Logout();
     this.router.navigate(['Login'])
+  }
+  
+  toggleDropdown(){
+    this.collapsed = !this.collapsed;
   }
 }
