@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Simple } from '../../../interfaces/items/simple';
 import { ItemService } from '../../../services/item/item.service';
 import { CartService } from '../../../services/cart/cart.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-item',
@@ -23,6 +24,7 @@ export class ItemComponent implements OnInit {
   }
 
   async ngOnInit() {
+    
     this.activatedRouter.params.subscribe(params => {
       this.id = +params['id'];
     });
@@ -37,6 +39,20 @@ export class ItemComponent implements OnInit {
   async addItemToCart(){
     this.cartService.addItem(this.id, (response)=>{
       console.log(response)
+      if(response.status)
+        swal({
+          title: '<h2>Item Adicionado</h2>',
+          confirmButtonText:
+          'Ir Para o carrinho',
+          showCancelButton: true,
+          cancelButtonText: 
+          'Continuar comprando'
+        }).then(result =>{
+          if(result.value)
+            this.router.navigate(['Cart'])
+        })
+      else
+        swal('Error')
     })
   }
 
