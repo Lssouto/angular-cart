@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   collapsed : Boolean = true;
 
   constructor(private AuthService : AuthService, private router : Router) {
-    if(window.innerWidth < 768)
+    if(window.innerWidth < 512)
       this.collapsed = false;
   }
 

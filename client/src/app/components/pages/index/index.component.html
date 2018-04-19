@@ -1,20 +1,5 @@
 <section id="index">
   <div class="container">
-    <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-      <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-        <div class="site-item">
-          <img src="{{ slide.image }}" alt="" width="100%">
-          <div class="content">
-            <h3 class="title">
-              {{slide.title}}
-            </h3>
-            <span class="price">
-              {{slide.price | currency}}
-            </span>
-            <a [routerLink]="['/Item', slide.id]" class="btn bg-main">Comprar</a >
-          </div>
-        </div>
-      </div>
-    </ngx-slick>
+    <app-slick [slides]="slides"></app-slick>
   </div>
 </section>

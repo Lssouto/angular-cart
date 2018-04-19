@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
   import { CartService } from './services/cart/cart.service';
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
+import { SlickComponent } from './components/includes/slick/slick.component';
 
 //Routes
 const appRoutes : Routes = [
@@ -64,7 +65,8 @@ const appRoutes : Routes = [
     PainelComponent,
     LoginComponent,
     CartComponent,
-    ItemComponent
+    ItemComponent,
+    SlickComponent
   ],
   imports: [
     BrowserModule,
