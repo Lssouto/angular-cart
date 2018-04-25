@@ -50,7 +50,7 @@ export class ItemComponent implements OnInit {
           'Continuar comprando'
         }).then(result =>{
           if(result.value)
-            this.router.navigate(['Cart'])
+            this.router.navigate(['cart'])
         })
       else
         swal('Error')
@@ -58,7 +58,7 @@ export class ItemComponent implements OnInit {
   }
 
   back() : void {
-    this.router.navigate(['Index']);
+    this.router.navigate(['index']);
   }
 
 }

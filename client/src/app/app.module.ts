@@ -39,7 +39,7 @@ const appRoutes : Routes = [
     component: IndexComponent
   },
   {
-    path: 'Painel',
+    path: 'painel',
     // canActivate : [AuthGuard],
     component: PainelComponent,
     children : [
@@ -58,15 +58,15 @@ const appRoutes : Routes = [
     ]
   },
   {
-    path: 'Login',
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: 'Item/:id',
+    path: 'item/:id',
     component: ItemComponent
   },
   {
-    path: 'Cart',
+    path: 'cart',
     canActivate : [AuthGuard],
     component: CartComponent
   },
