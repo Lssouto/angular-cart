@@ -1,0 +1,39 @@
+@import '../../../../assets/styles/main';
+
+#painel{
+    .painel-view{
+        background-color: $white;
+        box-shadow: 0 0 4px 2px darken($light-gray,5%);
+        min-height: 60px;
+    }
+    nav{
+        li{
+            display: inline-block;
+            margin-right: -3px;
+            padding: 0;
+            background-color:  lighten($white,10%);
+            @extend .fast-e;
+            
+            a{
+                display: block;
+                padding: 10px 15px;
+                color: $main;
+                background-color:  $light-gray;
+                border-bottom: 0px;
+                @extend .fast-e;
+                &:hover{
+                    background-color:  lighten($main,10%);
+                    color: $white;
+                }
+            }   
+            &.active{
+                a{
+                    transform: translateY(-10px);
+                    background-color:  white;
+                    color: $main;
+                    border-bottom: 0px;
+                }
+            }
+        }
+    }
+}

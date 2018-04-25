@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SlickComponent implements OnInit {
 
   @Input() slides : String;
-  @Input() test : String;
   slideConfig : Object;  
   
   constructor() { }

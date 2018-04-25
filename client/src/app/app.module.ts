@@ -8,10 +8,16 @@ import { AppComponent } from './app.component';
 //Includes
   import { HeaderComponent } from './components/includes/header/header.component';
   import { FooterComponent } from './components/includes/footer/footer.component';
+  import { SlickComponent } from './components/includes/slick/slick.component';
 
 //Pages 
   import { IndexComponent } from './components/pages/index/index.component';
+
   import { PainelComponent } from './components/pages/painel/painel.component';
+    import { PersonalInfoComponent } from './components/pages/painel/personal-info/personal-info.component';
+    import { MessagesComponent } from './components/pages/painel/messages/messages.component';
+    import { TransactionsComponent } from './components/pages/painel/transactions/transactions.component';
+
   import { LoginComponent } from './components/pages/login/login.component';
   import { CartComponent } from './components/pages/cart/cart.component';
   import { ItemComponent } from './components/pages/item/item.component';
@@ -24,7 +30,7 @@ import { AppComponent } from './app.component';
   import { CartService } from './services/cart/cart.service';
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
-import { SlickComponent } from './components/includes/slick/slick.component';
+
 
 //Routes
 const appRoutes : Routes = [
@@ -34,8 +40,22 @@ const appRoutes : Routes = [
   },
   {
     path: 'Painel',
-    canActivate : [AuthGuard],
-    component: PainelComponent
+    // canActivate : [AuthGuard],
+    component: PainelComponent,
+    children : [
+    {
+      path: 'personal-info',
+      component: PersonalInfoComponent 
+    },
+    {
+      path: 'messages',
+      component: MessagesComponent
+    },
+    {
+      path: 'transactions',
+      component: TransactionsComponent
+    }
+    ]
   },
   {
     path: 'Login',
@@ -66,7 +86,10 @@ const appRoutes : Routes = [
     LoginComponent,
     CartComponent,
     ItemComponent,
-    SlickComponent
+    SlickComponent,
+    PersonalInfoComponent,
+    MessagesComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,

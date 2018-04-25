@@ -1,3 +1,16 @@
-<p>
-  painel works!
-</p>
+<section id="painel">
+  <div class="container">
+    <div class="painel-nav">
+      <nav>
+        <ul>
+          <li [class.active]="(routerUrl == 'personal-info')"><a routerLink="/Painel/personal-info">Informacoes Pessoais</a></li>
+          <li [class.active]="(routerUrl == 'messages')"><a routerLink="/Painel/messages">Mensagens</a></li>
+          <li [class.active]="(routerUrl == 'transactions')"><a routerLink="/Painel/transactions">Transações</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="painel-view">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>
