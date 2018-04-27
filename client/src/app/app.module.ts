@@ -32,6 +32,7 @@ import { AppComponent } from './app.component';
   import { LocalstorageService } from './services/localstorage/localstorage.service'
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
+import { QtdInputComponent } from './components/includes/inputs/qtd-input/qtd-input.component';
 
 
 //Routes
@@ -91,7 +92,8 @@ const appRoutes : Routes = [
     SlickComponent,
     PersonalInfoComponent,
     MessagesComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    QtdInputComponent
   ],
   imports: [
     BrowserModule,

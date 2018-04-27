@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../services/cart/cart.service';
 import { Simple } from '../../../interfaces/items/simple';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -35,25 +36,48 @@ export class CartComponent implements OnInit {
 
   }
 
-  async cleanCart(){
-    await this.cartService.clean(response=>{
-      if(response.status){
-        this.items = [];
-      }
+  cleanCart(){
+    swal({
+      title: '<h2>Deseja remover todos os produtos?</h2>',
+      text: "A ação não poderá ser revertida.",
+      type: 'warning',
+      confirmButtonText:
+      'Remover',
+      showCancelButton: true,
+      cancelButtonText: 
+      'Cancelar'
+    }).then(async result =>{
+      if(result.value)
+      await this.cartService.clean(response=>{
+        if(response.status){
+          this.items = [];
+        }
+      })
     })
   }
   
-  async deleteOne(idItem,event){
-    
-    await this.cartService.deleteItem(idItem, response=>{
-      if(response.status){
-        const self = this;
-        event.target.parentElement.classList.add('top-fade-out')
-        setTimeout(function(){
-          event.target.parentElement.classList.remove('top-fade-out')
-          self.items.splice(response.data,1)
-        },600)
-      }
+  deleteOne(idItem,event){
+    swal({
+      title: '<h2>Deseja remover o item?</h2>',
+      text: "O item será removido do seu carrinho!",
+      type: 'warning',
+      confirmButtonText:
+      'Remover',
+      showCancelButton: true,
+      cancelButtonText: 
+      'Cancelar'
+    }).then(async result =>{
+      if(result.value)
+        await this.cartService.deleteItem(idItem, response=>{
+          if(response.status){
+            const self = this;
+            event.target.parentElement.classList.add('top-fade-out')
+            setTimeout(function(){
+              event.target.parentElement.classList.remove('top-fade-out')
+              self.items.splice(response.data,1)
+            },600)
+          }
+        })
     })
   }
 

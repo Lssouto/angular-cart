@@ -1,0 +1,39 @@
+@import '../../../../../assets/styles/main';
+.qtd-input-container:hover{
+    .btn-increase,.btn-decrease{
+        opacity: 1;
+        border-right-width: 12px ;
+        border-top-width: 12px ;
+        border-left-width: 12px ;
+        border-bottom-width: 12px ;
+    }
+}
+.qtd-input-container{
+    position: relative;
+    .btn-increase,.btn-decrease{
+        padding: 0;
+        background-color: transparent;
+        height: 0;
+        width: 0;
+        @extend .fast-e;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .btn-decrease{
+        left: -30px;
+        opacity: 0.6;
+        border-right: 10px solid $light-gray;
+        border-top: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+    .btn-increase{
+        right: -30px;
+        opacity: 0.6;
+        border-left: 10px solid $light-gray;
+        border-top: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+}

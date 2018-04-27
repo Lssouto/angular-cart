@@ -90,15 +90,44 @@
                     }
                 }
             }
-            .btn-remove{
-                border-radius: 50%;
-                padding: 5px 10px;
+            /deep/ .btn-position-top{
                 position: absolute;
-                top: -15px;
-                right: -10px;
+                top: -20px;
                 margin: 0;
                 @include media($sm,'max'){
                     width: initial;
+                }
+                &.btn-action, .btn-action{
+                    border-radius: 50%;
+                    padding: 5px 0;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    top: -20px;
+                    margin: 0;
+                }
+            }
+            .btn-remove{
+                right: -15px;
+                &:hover{
+                    animation: spin linear 1s;
+                }
+            }
+            .btn-qtd{
+                left: -15px;
+            }
+            /deep/  .qtd-input-container{
+                .btn-qtd{
+                    background-color: $main;
+                    color: $white;
+                }
+                .btn-increase{
+                    margin-bottom: 10px;
+                    border-left-color: $main;
+                }
+                .btn-decrease{
+                    margin-bottom: 10px;
+                    border-right-color: $main;
                 }
             }
         }

@@ -9,9 +9,17 @@
     @include animation-spd(.4s);
 }
 
-//
 .top-fade-out{
     animation: top-fade-out linear 0.6s;
+}
+.spin{
+    animation: spin linear 0.3s;
+}
+.text-out-left{
+    animation: text-out-left cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+}
+.text-out-right{
+    animation: text-out-right cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
 }
 
 @keyframes bounce {
@@ -35,5 +43,35 @@
     100%{
         transform: translateY(-80px);
         opacity: 0;
+    }
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+@keyframes text-out-left{
+    0%{ text-indent: 0;
+        overflow: hidden; 
+    }
+    35%{ text-indent: -100px; }
+    100%{ text-indent: 0; 
+        overflow: hidden; 
+    }
+}
+@keyframes text-out-right{
+    0%{ text-indent: 0; 
+        overflow: hidden; 
+    }
+    35%{ text-indent: 100px; }
+    100%{ text-indent: 0;
+        overflow: hidden; 
     }
 }
