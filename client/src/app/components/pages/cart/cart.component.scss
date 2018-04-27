@@ -28,6 +28,9 @@
         justify-content: space-around;
         li{
             @extend .fast-e;
+            @include media($sm,'max'){
+                margin: 25px auto;
+            }
             width: 250px;
             border-radius: 4px;
             margin-bottom: 45px;
