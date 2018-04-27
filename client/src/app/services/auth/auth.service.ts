@@ -5,13 +5,9 @@ import { LocalstorageService } from '../localstorage/localstorage.service';
 @Injectable()
 export class AuthService {
 
-  private isUserLoggedIn : boolean;
   private auth : Object;
-  private UserId : Number;
 
-  constructor(private http: HttpClient, private localstorage: LocalstorageService) {
-    this.isUserLoggedIn = false;
-  }
+  constructor(private http: HttpClient, private localstorage: LocalstorageService) {}
 
   getIsUserLoggedIn(){
     const response = this.localstorage.get('auth')
@@ -26,8 +22,6 @@ export class AuthService {
       .subscribe(
         response => {
           callback(response)
-          this.UserId = response['id'];
-          this.isUserLoggedIn = true;
           this.localstorage.persist('auth',{ 
             id : response['id']
           })
@@ -36,11 +30,12 @@ export class AuthService {
 
   Logout(){
     this.localstorage.removeAll();
-    this.isUserLoggedIn = false;
   }
   
   getUserId() : Number {
-    return this.UserId;
+    if(this.getIsUserLoggedIn()){
+      const response = this.localstorage.get('auth')
+      return (JSON.parse(response))['id']
+    }
   }
-
 }
