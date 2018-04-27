@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { PersistenceModule } from 'angular-persistence';
 
 import { AppComponent } from './app.component';
 
@@ -28,6 +29,7 @@ import { AppComponent } from './app.component';
   import { AuthService } from './services/auth/auth.service';
   import { ItemService } from './services/item/item.service';
   import { CartService } from './services/cart/cart.service';
+  import { LocalstorageService } from './services/localstorage/localstorage.service'
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
 
@@ -40,7 +42,7 @@ const appRoutes : Routes = [
   },
   {
     path: 'painel',
-    // canActivate : [AuthGuard],
+    canActivate : [AuthGuard],
     component: PainelComponent,
     children : [
     {
@@ -95,9 +97,16 @@ const appRoutes : Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     SlickModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    PersistenceModule
   ],
-  providers: [AuthService, AuthGuard, ItemService, CartService],
+  providers: [
+    AuthService, 
+    AuthGuard, 
+    ItemService, 
+    CartService,
+    LocalstorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

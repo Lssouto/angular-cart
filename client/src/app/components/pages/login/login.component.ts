@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.getIsUserLoggedIn();
   }
 
   async login(e, formValue){
@@ -27,7 +28,6 @@ export class LoginComponent implements OnInit {
     this.error = new Error(false,'');
 
     try{
-      console.log(formValue)
       const credentials = new User(formValue['user'],formValue['password']);
       
       const isValid = Object.keys(credentials.getAuth()).every(item=>{

@@ -11,9 +11,9 @@
     <ul [ngClass]="{collapsed : collapsed}" >
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/painel">Painel</a></li>
-      <li *ngIf="AuthService.isUserLoggedIn"><a routerLink="/cart">Cart</a></li>
-      <li *ngIf="AuthService.isUserLoggedIn"><a href="/logout" (click)="logout($event)">Logout</a></li>
-      <li *ngIf="!(AuthService.isUserLoggedIn)"><a routerLink="/login">Login</a></li>
+      <li *ngIf="AuthService.getIsUserLoggedIn()"><a routerLink="/cart">Cart</a></li>
+      <li *ngIf="AuthService.getIsUserLoggedIn()"><a href="/logout" (click)="logout($event)">Logout</a></li>
+      <li *ngIf="!(AuthService.getIsUserLoggedIn())"><a routerLink="/login">Login</a></li>
     </ul>
   </nav>
 </header>
