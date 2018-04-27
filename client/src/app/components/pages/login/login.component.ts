@@ -21,15 +21,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  async login(e){
+  async login(e, formValue){
     e.preventDefault();
     
     this.error = new Error(false,'');
 
     try{
+      console.log(formValue)
+      const credentials = new User(formValue['user'],formValue['password']);
       
-      const credentials = new User(e.target.elements[0].value,e.target.elements[1].value);
-  
       const isValid = Object.keys(credentials.getAuth()).every(item=>{
         return !!credentials.getAuth()[item];
       })

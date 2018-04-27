@@ -52,7 +52,7 @@ const appRoutes : Routes = [
       component: MessagesComponent
     },
     {
-      path: 'transactions',
+      path: '',
       component: TransactionsComponent
     }
     ]

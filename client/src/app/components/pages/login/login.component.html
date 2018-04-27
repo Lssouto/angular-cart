@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <form (submit)="login($event)">
+    <form (submit)="login($event, {user : user.value, password : password.value})">
       <label class="input-container">
         Login
         <input type="text" #user>
