@@ -18,10 +18,11 @@ export class CartService {
     }
   }
 
-  addItem(itemId : number, callback : (data) => void ){
+  addItem(item : Object, callback : (data) => void ){
     if(this.isUserLoggedIn())
       this.http.post('http://localhost:8080/api/cart/' + this.auth.getUserId(), {
-        itemId : itemId
+        itemId : item['id'],
+        itemQtd : item['qtd']
       }).subscribe(
           response =>{
             callback(response)
@@ -57,5 +58,16 @@ export class CartService {
           callback(response)
         }
       )
+  }
+
+  pay(callback){
+    if(this.isUserLoggedIn()){
+      this.http.get('http://localhost:8080/api/cart/pay/' + this.auth.getUserId())
+        .subscribe(
+          response=>{
+            callback(response)
+          }
+        )
+    }
   }
 }

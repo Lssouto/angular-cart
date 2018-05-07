@@ -1,27 +1,37 @@
 const model = require('../model/data')
 
+const findUserCart = id =>{
+    try {
+        let userCartList,userCart;
+
+        if(model.cartList.length)
+            userCartList = (model.cartList).filter(cart =>{
+                return cart.idUser == id;
+            });
+        else{
+            throw 'Carrinho Inexistente';
+        }
+
+        userCart = userCartList.find(cart=>{
+            return cart.status == 'open'
+        });
+
+        return userCart;    
+    }catch(e){
+        return null;    
+    }
+    
+}
+
 module.exports = {
-    clean: (req,res)=>{
-        const idUser = req.params.id;
-        const UserCart = (model.cartList).find(cartItem =>{
-            return idUser == cartItem.idUser
-        })
-    },
     addItem: (req,res) =>{
         try{
             let cart = null;
-            let existUserCart = false;
             const idUser = req.params.id;
 
-            if(model.cartList.length)
-                 existUserCart = (model.cartList).find(cart =>{
-                    return cart.idUser == idUser;
-                });
+            cart = findUserCart(idUser);
 
-            if(existUserCart){
-                cart = existUserCart;
-            }
-            else{
+            if(!cart){
                 cart = new model.Cart( model.cartList.length, idUser );
             }
             
@@ -29,11 +39,13 @@ module.exports = {
                 return req.body.itemId == item.id
             });
             
+            item['qtd'] = parseInt(req.body.itemQtd)
+
             cart.addItem(item)
 
-            if(existUserCart){
+            if(cart){
                 model.cartList.splice(
-                    existUserCart.id-1,
+                    cart.id-1,
                     1,
                     cart
                 );
@@ -57,17 +69,10 @@ module.exports = {
     },
     get: (req,res)=>{
         try{
-            const idUser = req.params.id
-            let userCart;
+            const idUser = req.params.id;
             
-            if(model.cartList.length)
-                userCart = (model.cartList).find(cart =>{
-                    return cart.idUser == idUser;
-                });
-            else{
-                throw 'Carrinho Inexistente';
-            }
-
+            const userCart = findUserCart(idUser)
+            
             res.send({
                 status: true,
                 data: userCart,
@@ -84,11 +89,10 @@ module.exports = {
     delete : (req,res)=>{
         try{
             const idUser = req.params.id;
-            const userIndex = (model.cartList).findIndex(cart=>{
-                return cart.idUser == idUser;
-            })
 
-            const removedCart = model.cartList.splice(userIndex,1);
+            const userCart = findUserCart(idUser);
+
+            const removedCart = (userCart.updateStatus('cancel'));
 
             res.send({
                 status: true,
@@ -129,6 +133,25 @@ module.exports = {
             res.send({
                 status: false,
                 error: '' + e
+            })
+        }
+    },
+    pay(req,res){
+        try{
+            const idUser = req.params.id;
+            
+            const userCart = findUserCart(idUser);
+            
+            userCart.updateStatus('finish');
+
+            res.send({
+                status: true,
+                msg: 'Pagamento realizado.'
+            })
+        }catch(e){
+            res.send({
+                status: false,
+                error : '' + e
             })
         }
     }

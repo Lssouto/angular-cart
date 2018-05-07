@@ -15,6 +15,7 @@ export class ItemComponent implements OnInit {
 
   id : number;
   item : Simple;
+  qtd : number = 1;
 
   constructor(
     private activatedRouter : ActivatedRoute, 
@@ -37,8 +38,11 @@ export class ItemComponent implements OnInit {
 
   }
 
-  async addItemToCart(){
-    this.cartService.addItem(this.id, (response)=>{
+  async addItemToCart(qtd : number){
+    this.cartService.addItem({
+      id : this.id,
+      qtd : qtd
+    }, (response)=>{
       console.log(response)
       if(response.status)
         swal({

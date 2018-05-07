@@ -68,6 +68,7 @@ let _items = [
 
 ];
 let _cartList = [];
+let _transactions = [];
 
 //CartModel
 class Cart {
@@ -76,10 +77,22 @@ class Cart {
         this.idCart = idCart;
         this.idUser = idUser;
         this.items = [];
+        this.status = 'open'; //Open , canceled, w8 payment, done
     }
 
     addItem(array){
         this.items.push(array);
+    }
+
+    updateStatus(status){
+        switch(status){
+            case 'open':
+            case 'cancel':
+            case 'waiting':
+            case 'finish':
+            this.status = status;
+            break;
+        }
     }
 }
 
@@ -95,5 +108,6 @@ module.exports = {
     usuarios : _usuarios,
     items : _items,
     cartList: _cartList,
-    Cart
+    Cart,
+    transactions : _transactions
 };

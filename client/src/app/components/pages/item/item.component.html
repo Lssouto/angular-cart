@@ -35,7 +35,10 @@
       </ul>
 
       <div class="action">
-        <button class="btn bg-main no-radius" (click)="addItemToCart()">Adicionar ao Carrinho</button>
+        <div class="input-container item-qtd">
+          <input type="number" #qtd min="0" name="qtd" value="1">
+        </div>
+        <button class="btn bg-main no-radius" (click)="addItemToCart(qtd.value)">Adicionar ao Carrinho</button>
         <button class="btn bg-secundary no-radius" (click)="back()">Voltar</button>
       </div>
 

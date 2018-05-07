@@ -33,7 +33,24 @@ export class CartComponent implements OnInit {
   }
 
   payment(){
-
+    this.cartService.pay(response=>{
+      if(response.status){
+        swal({
+          title: '<h2>Pagamento Realizado</h2>',
+          type: 'success',
+          confirmButtonText:
+          'Finalizar'
+        })
+        this.items = [];
+      }
+      else
+        swal({
+          title: '<h2>Ocorreu um erro</h2>',
+          type: 'error',
+          confirmButtonText:
+          'Finalizar'
+        })
+    })
   }
 
   cleanCart(){

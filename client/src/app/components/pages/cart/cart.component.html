@@ -31,7 +31,8 @@
             <a [routerLink]="['/Item/',item.id]" class="btn bg-secundary no-radius max">Ver Produto <span>b</span> </a>
           </div>
           <button (click)="deleteOne(item.id,$event)" class="btn btn-position-top btn-action btn-remove bg-complement">X</button>
-          <app-qtd-input class="btn-position-top btn-qtd" [minValue]="0" [maxValue]="10"></app-qtd-input>
+          <app-qtd-input class="btn-position-top btn-qtd" [minValue]="0" [maxValue]="10" [value]="item.qtd"></app-qtd-input>
+          
         </li>
       </ul>
       

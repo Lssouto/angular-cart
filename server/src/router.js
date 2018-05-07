@@ -37,4 +37,5 @@ module.exports = (router)=>{
     router.post(config.data.api+ '/cart/:id', CartCtrl.addItem),
     router.delete(config.data.api+ '/cart/:id', CartCtrl.delete),
     router.delete(config.data.api+ '/cart/:idUser/:idItem', CartCtrl.deleteItem)
+    router.get(config.data.api+ '/cart/pay/:id', CartCtrl.pay)
 };
