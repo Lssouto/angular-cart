@@ -97,7 +97,8 @@ class Cart {
             idCart : this.idCart,
             idUser : this.idUser,
             status : this.status,
-            items : this.items
+            items : this.items,
+            data: new Date()
         })
     }
 }

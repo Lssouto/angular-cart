@@ -71,8 +71,8 @@
     }
 }
 @mixin animation-spd($spd){
-    -webkit-transition: all $spd linear 0s;
-    -moz-transition: all $spd linear 0s;
-    -o-transition: all $spd linear 0s;
-    transition: all $spd linear 0s;
+    -webkit-transition: all $spd cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
+    -moz-transition: all $spd cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
+    -o-transition: all $spd cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
+    transition: all $spd cubic-bezier(0.4, 0.0, 0.2, 1) 0s;
 }

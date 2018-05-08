@@ -1,17 +1,33 @@
-<section id="transactions">
+<div class="transactions">
   <div class="msg-box" *ngIf="!transactions.length">
     <div class="msg-box-content">
       Nao foi localizado transaçoes.
     </div>
   </div>
-  <ul>
-    <li *ngFor="let transaction of transactions">
-      {{transaction.status}} 
-      <ul>
-        <li *ngFor="let item  of transaction.items">
-          <img src="{{item.image}}" alt=""> - {{item.title}} - {{item.price}}
-        </li>
-      </ul>
+  <ul class="transactions-list">
+    <li class="transactions-list-item " *ngFor="let transaction of transactions">
+      <div class="info">
+        <div class="item-status">
+          Status : <span class="value">{{transaction.status}}</span>
+        </div>
+        <small>{{transaction.data}}</small>
+      </div>
+      <table class="item-list shadowbox">
+        <thead>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of transaction.items">
+            <td>
+              <a [routerLink]="['/item/',item.id]" class="item-title">{{item.title}}</a>
+            </td>
+            <td>{{item.price}}</td>
+            <td>{{item.qtd}}</td>
+          </tr>
+        </tbody>
+      </table>
     </li>
   </ul>
-</section>
+</div>
