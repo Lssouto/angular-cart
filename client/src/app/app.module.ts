@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
   import { HeaderComponent } from './components/includes/header/header.component';
   import { FooterComponent } from './components/includes/footer/footer.component';
   import { SlickComponent } from './components/includes/slick/slick.component';
+  import { QtdInputComponent } from './components/includes/inputs/qtd-input/qtd-input.component';
 
 //Pages 
   import { IndexComponent } from './components/pages/index/index.component';
@@ -29,11 +30,11 @@ import { AppComponent } from './app.component';
   import { AuthService } from './services/auth/auth.service';
   import { ItemService } from './services/item/item.service';
   import { CartService } from './services/cart/cart.service';
-  import { LocalstorageService } from './services/localstorage/localstorage.service'
+  import { LocalstorageService } from './services/localstorage/localstorage.service';
+  import { PainelService } from './services/painel/painel.service';
+
 //Guard
   import { AuthGuard } from './guards/auth/auth.guard';
-import { QtdInputComponent } from './components/includes/inputs/qtd-input/qtd-input.component';
-
 
 //Routes
 const appRoutes : Routes = [
@@ -107,7 +108,8 @@ const appRoutes : Routes = [
     AuthGuard, 
     ItemService, 
     CartService,
-    LocalstorageService
+    LocalstorageService,
+    PainelService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,17 @@
-<div>
-  transações
-</div>
+<section id="transactions">
+  <div class="msg-box" *ngIf="!transactions.length">
+    <div class="msg-box-content">
+      Nao foi localizado transaçoes.
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let transaction of transactions">
+      {{transaction.status}} 
+      <ul>
+        <li *ngFor="let item  of transaction.items">
+          <img src="{{item.image}}" alt=""> - {{item.title}} - {{item.price}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>

@@ -38,7 +38,7 @@ export class ItemComponent implements OnInit {
 
   }
 
-  async addItemToCart(qtd : number){
+  addItemToCart(qtd : number){
     this.cartService.addItem({
       id : this.id,
       qtd : qtd

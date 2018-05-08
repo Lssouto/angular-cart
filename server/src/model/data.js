@@ -93,6 +93,12 @@ class Cart {
             this.status = status;
             break;
         }
+        _transactions.push({
+            idCart : this.idCart,
+            idUser : this.idUser,
+            status : this.status,
+            items : this.items
+        })
     }
 }
 

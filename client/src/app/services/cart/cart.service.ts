@@ -10,7 +10,7 @@ export class CartService {
 
   isUserLoggedIn(): Boolean{
     if(!this.auth.getIsUserLoggedIn()){
-      this.router.navigate(['Login'])
+      this.router.navigate(['login'])
       return false;
     }
     else{

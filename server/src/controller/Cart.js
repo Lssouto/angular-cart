@@ -24,6 +24,66 @@ const findUserCart = id =>{
 }
 
 module.exports = {
+    get: (req,res)=>{
+        try{
+            const idUser = req.params.id;
+            
+            const userCart = findUserCart(idUser)
+            
+            res.send({
+                status: true,
+                data: userCart,
+                msg: "Adicionado"
+            })
+        }catch(e){
+            res.send({
+                status: false,
+                data: null,
+                msg: "" + e
+            })
+        }
+    },
+    delete : (req,res)=>{
+        try{
+            const idUser = req.params.id;
+
+            const userCart = findUserCart(idUser);
+
+            const removedCart = (userCart.updateStatus('cancel'));
+
+            res.send({
+                status: true,
+                data: removedCart,
+                msg: 'Mensagem Removida com sucesso'
+
+            })
+        }
+        catch(e){
+            res.send({
+                status: false,
+                error: '' + e 
+            })   
+        }
+    },
+    pay(req,res){
+        try{
+            const idUser = req.params.id;
+            
+            const userCart = findUserCart(idUser);
+            
+            userCart.updateStatus('finish');
+
+            res.send({
+                status: true,
+                msg: 'Pagamento realizado.'
+            })
+        }catch(e){
+            res.send({
+                status: false,
+                error : '' + e
+            })
+        }
+    },
     addItem: (req,res) =>{
         try{
             let cart = null;
@@ -67,47 +127,6 @@ module.exports = {
             })
         }
     },
-    get: (req,res)=>{
-        try{
-            const idUser = req.params.id;
-            
-            const userCart = findUserCart(idUser)
-            
-            res.send({
-                status: true,
-                data: userCart,
-                msg: "Adicionado"
-            })
-        }catch(e){
-            res.send({
-                status: false,
-                data: null,
-                msg: "" + e
-            })
-        }
-    },
-    delete : (req,res)=>{
-        try{
-            const idUser = req.params.id;
-
-            const userCart = findUserCart(idUser);
-
-            const removedCart = (userCart.updateStatus('cancel'));
-
-            res.send({
-                status: true,
-                data: removedCart,
-                msg: 'Mensagem Removida com sucesso'
-
-            })
-        }
-        catch(e){
-            res.send({
-                status: false,
-                error: '' + e 
-            })   
-        }
-    },
     deleteItem : (req,res)=>{
         try{
             const idUser = req.params.idUser;
@@ -133,25 +152,6 @@ module.exports = {
             res.send({
                 status: false,
                 error: '' + e
-            })
-        }
-    },
-    pay(req,res){
-        try{
-            const idUser = req.params.id;
-            
-            const userCart = findUserCart(idUser);
-            
-            userCart.updateStatus('finish');
-
-            res.send({
-                status: true,
-                msg: 'Pagamento realizado.'
-            })
-        }catch(e){
-            res.send({
-                status: false,
-                error : '' + e
             })
         }
     }

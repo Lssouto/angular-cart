@@ -3,6 +3,7 @@ const AuthCtrl = require('./controller/Authentication')
 const UserCtrl = require('./controller/User')
 const ItemCtrl = require('./controller/Item')
 const CartCtrl = require('./controller/Cart')
+const PainelCtrl = require('./controller/Painel')
 const config  = require('./config')
 
 const _all = (req, res, next) => {
@@ -36,6 +37,9 @@ module.exports = (router)=>{
     router.get(config.data.api+ '/cart/:id', CartCtrl.get),
     router.post(config.data.api+ '/cart/:id', CartCtrl.addItem),
     router.delete(config.data.api+ '/cart/:id', CartCtrl.delete),
-    router.delete(config.data.api+ '/cart/:idUser/:idItem', CartCtrl.deleteItem)
-    router.get(config.data.api+ '/cart/pay/:id', CartCtrl.pay)
+    router.delete(config.data.api+ '/cart/:idUser/:idItem', CartCtrl.deleteItem),
+    router.get(config.data.api+ '/cart/pay/:id', CartCtrl.pay),
+
+  //Painel
+    router.get(config.data.api + '/painel/transactions', PainelCtrl.getTransactions) 
 };
